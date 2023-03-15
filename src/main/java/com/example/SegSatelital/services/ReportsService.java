@@ -2,14 +2,17 @@ package com.example.SegSatelital.services;
 
 import com.example.SegSatelital.devices.Device1;
 import com.example.SegSatelital.devices.Device2;
+import com.example.SegSatelital.entitys.Reports;
 import com.example.SegSatelital.repositories.ReportsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 @Service
 public class ReportsService {
     @Autowired
     private ReportsRepository reportsRepository;
+
 
 public String createRepotrs(String report){
     String[] campos = report.split(",");
@@ -27,5 +30,10 @@ public String createRepotrs(String report){
     
     return respuesta;
 
+}
+
+public Optional<Reports> leerReport(Long id){
+
+    return reportsRepository.findById(id);
 }
 }
